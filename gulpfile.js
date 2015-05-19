@@ -29,14 +29,14 @@ gulp.task('bundleCSS', function () {
         'bower_components/components-font-awesome/css/font-awesome.min.css',
         'bower_components/animate.css/animate.min.css'
     ])
-        .pipe(gulp.dest('app/lib/css'))
+        .pipe(gulp.dest('deploy/lib/css'))
 });
 
 gulp.task('bundleFonts', function () {
     gulp.src([
         'bower_components/components-font-awesome/fonts/**'
     ])
-        .pipe(gulp.dest('app/lib/fonts'))
+        .pipe(gulp.dest('deploy/lib/fonts'))
 });
 
 gulp.task('default', ['bundleJS', 'bundleCSS', 'bundleFonts'], function () {
@@ -47,7 +47,7 @@ gulp.task('default', ['bundleJS', 'bundleCSS', 'bundleFonts'], function () {
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: "./app"
+            baseDir: "./deploy"
         }
     });
 });
