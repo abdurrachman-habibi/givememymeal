@@ -1,0 +1,24 @@
+{
+  "name": "givememymeal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://veenix@bitbucket.org/veenix/givememymeal.git"
+  },
+  "dependencies": {
+    "browser-sync": "latest",
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-concat-css": "latest",
+    "gulp-if": "latest",    
+    "gulp-rename": "latest",
+    "gulp-replace": "latest",
+  },
+  "author": "",
+  "license": "ISC"
+}

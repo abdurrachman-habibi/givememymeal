@@ -1,0 +1,28 @@
+{
+  "name": "givememymeal",
+  "version": "0.0.0",
+  "authors": [
+    "Habibi <guilvee@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": null,
+    "angular-animate": null,
+    "angular-sanitize": null,
+    "angular-i18n": null,
+    "angular-resource": null,
+    "angular-material": null,
+    "components-font-awesome": null,
+    "angular-local-storage": null,
+    "angular-route": null,
+    "animate.css": null,
+    "angular-touch": null
+  }
+}
