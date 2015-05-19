@@ -15,11 +15,13 @@
 </head>
 
 <body ng-app="app" md-theme="default">
-    Hello World !!!!
+    <div ng-include="'app/layout/shell.html'"></div>
 
     <script src="lib/js/bower-bundle.min.js"></script>
 
     <script src="app/app.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/selection/selection.controller.js"></script>
 </body>
 
 </html>
