@@ -1,7 +1,5 @@
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var watch = require('gulp-watch');
-var manifest = require('gulp-manifest');
 var replace = require('gulp-replace');
 var gulpif = require('gulp-if');
 var concat = require('gulp-concat');
@@ -19,7 +17,6 @@ gulp.task('bundleJS', function () {
         'bower_components/angular-aria/angular-aria.min.js',
         'bower_components/angular-touch/angular-touch.min.js',
         'bower_components/angular-material/angular-material.min.js',
-        'bower_components/angular-i18n/angular-locale_id.js',
         'bower_components/angular-local-storage/dist/angular-local-storage.min.js'
     ])
         .pipe(concat('bower-bundle.min.js'))

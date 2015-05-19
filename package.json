@@ -17,7 +17,7 @@
     "gulp-concat-css": "latest",
     "gulp-if": "latest",    
     "gulp-rename": "latest",
-    "gulp-replace": "latest",
+    "gulp-replace": "latest"
   },
   "author": "",
   "license": "ISC"
