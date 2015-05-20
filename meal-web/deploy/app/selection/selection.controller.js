@@ -3,9 +3,9 @@
 
     window.angular.module('app').controller('SelectionController', SelectionController);
 
-    SelectionController.$inject = ['$location'];
+    SelectionController.$inject = ['$location', 'selectionService'];
 
-    function SelectionController($location) {
+    function SelectionController($location, selectionService) {
 
         var vm = this;
 
@@ -32,5 +32,11 @@
                 vm.kcalperday = computekcalperday;
             }
         };
+
+        vm.submit = function(){
+            selectionService.retrieve('1', '123').then(function(){
+                $location.path('/selection-result');
+            });
+        }
     }
 })();
