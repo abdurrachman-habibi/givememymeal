@@ -1,3 +1,40 @@
-<div>
-    Yeay!!!
+<div layout="column">
+    <div layout="row">
+        <div flex="15">
+            <md-input-container>
+                <label>Age</label>
+                <input ng-required="true" name="age" maxlength="3">
+            </md-input-container>
+        </div>
+    </div>
+    <div layout="row">
+        <div flex="25">
+            <md-select placeholder="Gender" ng-model="someVal">
+                <md-option value="1">Male</md-option>
+                <md-option value="2">Female</md-option>
+            </md-select>
+            <md-input-container>
+                <label>Height (cm)</label>
+                <input ng-required="true" name="age">
+            </md-input-container>
+            <md-input-container>
+                <label>Weight (kg)</label>
+                <input ng-required="true" name="age">
+            </md-input-container>
+        </div>
+    </div>
+    <div layout="row">
+        <div>
+            <md-radio-group layout="row">
+                <label for="input_008">Are you Vegetarian?</label>
+                <md-radio-button value="Apple">Yes</md-radio-button>
+                <md-radio-button value="Banana"> No </md-radio-button>
+            </md-radio-group>
+        </div>
+    </div>
+    <div layout="row">
+        <div>
+            <md-button class="md-raised md-primary" style="width:98%">Give Me My Meal Plan</md-button>
+        </div>
+    </div>
 </div>
