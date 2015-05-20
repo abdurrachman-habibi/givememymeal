@@ -4,13 +4,13 @@
 // =============================================================================
 
 // call the packages we need
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
+var express = require('express');        // call express
+var app = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;        // set our port
@@ -23,43 +23,45 @@ var meal = new Meal();
 var router = express.Router();              // get an instance of the express Router
 
 // middleware to use for all requests
-router.use(function(req, res, next) {
-  // do logging
-  console.log('Something is happening.');
-  next(); // make sure we go to the next routes and don't stop here
+router.use(function (req, res, next) {
+    // do logging
+    console.log('Something is happening.');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next(); // make sure we go to the next routes and don't stop here
 });
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-  res.json({ message: 'hooray! welcome to our api!' });
+router.get('/', function (req, res) {
+    res.json({message: 'hooray! welcome to our api!'});
 });
 
 // more routes for our API will happen here
 router.route('/meals')
-    .get(function(req, res) {
-      var key = '';
-      var cal = req.query.cal;
+    .get(function (req, res) {
+        var key = '';
+        var cal = req.query.cal;
 
-      switch(req.query.key){
-        case '0':
-              key = 'Vegetarian';
-              break;
-        case '1':
-              key = 'NonVegetarian';
-              break;
-      }
+        switch (req.query.key) {
+            case '0':
+                key = 'Vegetarian';
+                break;
+            case '1':
+                key = 'NonVegetarian';
+                break;
+        }
 
-      meal.query(key, function(err, items) {
-        if (err)
-          res.send(err);
+        meal.query(key, function (err, items) {
+            if (err)
+                res.send(err);
 
-        res.json(items);
-        filterItems(cal);
-      });
+            res.json(items);
+            filterItems(cal);
+        });
 
-      function filterItems(calorie){
+        function filterItems(calorie) {
 
-      }
+        }
     });
 
 // REGISTER OUR ROUTES -------------------------------
