@@ -79,11 +79,28 @@ function filterItems(items, cal) {
     var filteredMeals = [];
 
     for (var i = 0; i < 7; i++) {
+        var breakfast = meals.breakfast[Math.floor(Math.random() * meals.breakfast.length)];
+        var lunch = meals.lunch[Math.floor(Math.random() * meals.lunch.length)];
+        var snack = meals.snack[Math.floor(Math.random() * meals.snack.length)];
+        var dinner = meals.dinner[Math.floor(Math.random() * meals.dinner.length)];
+
         var meal = {
-            breakfast: meals.breakfast[Math.floor(Math.random() * meals.breakfast.length)],
-            lunch: meals.lunch[Math.floor(Math.random() * meals.lunch.length)],
-            snack: meals.snack[Math.floor(Math.random() * meals.snack.length)],
-            dinner: meals.dinner[Math.floor(Math.random() * meals.dinner.length)]
+            breakfast: {
+                meal: breakfast.RowKey,
+                calories: breakfast.Calories
+            },
+            lunch: {
+                meal: lunch.RowKey,
+                calories: lunch.Calories
+            },
+            snack: {
+                meal: snack.RowKey,
+                calories: snack.Calories
+            },
+            dinner: {
+                meal: dinner.RowKey,
+                calories: dinner.Calories
+            }
         };
 
         filteredMeals.push(meal);
