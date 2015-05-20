@@ -55,14 +55,42 @@ router.route('/meals')
             if (err)
                 res.send(err);
 
-            res.json(items);
-            filterItems(cal);
+            var result = filterItems(items, cal);
+            res.json(result);
         });
-
-        function filterItems(calorie) {
-
-        }
     });
+
+function filterItems(items, cal) {
+    var meals = {
+        breakfast: items.filter(function (item) {
+            return item.Type == 'Breakfast'
+        }),
+        lunch: items.filter(function (item) {
+            return item.Type == 'Lunch'
+        }),
+        snack: items.filter(function (item) {
+            return item.Type == 'Snack'
+        }),
+        dinner: items.filter(function (item) {
+            return item.Type == 'Dinner'
+        })
+    };
+
+    var filteredMeals = [];
+
+    for (var i = 0; i < 7; i++) {
+        var meal = {
+            breakfast: meals.breakfast[Math.floor(Math.random() * meals.breakfast.length)],
+            lunch: meals.lunch[Math.floor(Math.random() * meals.lunch.length)],
+            snack: meals.snack[Math.floor(Math.random() * meals.snack.length)],
+            dinner: meals.dinner[Math.floor(Math.random() * meals.dinner.length)]
+        };
+
+        filteredMeals.push(meal);
+    }
+
+    return filteredMeals;
+}
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
