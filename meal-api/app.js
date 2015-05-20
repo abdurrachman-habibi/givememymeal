@@ -7,6 +7,7 @@
 var express = require('express');        // call express
 var app = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var escapeString = require('querystring');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -77,29 +78,33 @@ function filterItems(items, cal) {
     };
 
     var filteredMeals = [];
+    var imageUri = 'http://givememymeal.blob.core.windows.net/images/';
 
     for (var i = 0; i < 7; i++) {
         var breakfast = meals.breakfast[Math.floor(Math.random() * meals.breakfast.length)];
         var lunch = meals.lunch[Math.floor(Math.random() * meals.lunch.length)];
         var snack = meals.snack[Math.floor(Math.random() * meals.snack.length)];
         var dinner = meals.dinner[Math.floor(Math.random() * meals.dinner.length)];
-
         var meal = {
             breakfast: {
                 meal: breakfast.RowKey,
-                calories: breakfast.Calories
+                calories: breakfast.Calories,
+                image: imageUri + escapeString.escape(breakfast.RowKey) + '.jpg'
             },
             lunch: {
                 meal: lunch.RowKey,
-                calories: lunch.Calories
+                calories: lunch.Calories,
+                image: imageUri + escapeString.escape(lunch.RowKey) + '.jpg'
             },
             snack: {
                 meal: snack.RowKey,
-                calories: snack.Calories
+                calories: snack.Calories,
+                image: imageUri + escapeString.escape(snack.RowKey) + '.jpg'
             },
             dinner: {
                 meal: dinner.RowKey,
-                calories: dinner.Calories
+                calories: dinner.Calories,
+                image: imageUri + escapeString.escape(dinner.RowKey) + '.jpg'
             }
         };
 
