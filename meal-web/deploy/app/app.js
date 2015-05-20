@@ -27,7 +27,7 @@
             configuration: {
                 templateUrl: 'app/selection/selection.html',
                 controller: 'SelectionController',
-                controllerAs: 'home'
+                controllerAs: 'selection'
             }
         }
     ];

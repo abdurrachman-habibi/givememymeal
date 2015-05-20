@@ -3,30 +3,37 @@
         <div flex="15">
             <md-input-container>
                 <label>Age</label>
-                <input ng-required="true" name="age" maxlength="3">
+                <input ng-required="true" name="age" maxlength="3" ng-model="selection.age">
             </md-input-container>
         </div>
     </div>
     <div layout="row">
         <div flex="25">
-            <md-select placeholder="Gender" ng-model="someVal">
+            <md-select placeholder="Gender" ng-model="selection.gender">
                 <md-option value="1">Male</md-option>
                 <md-option value="2">Female</md-option>
             </md-select>
             <md-input-container>
                 <label>Height (cm)</label>
-                <input ng-required="true" name="age">
+                <input ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()">
             </md-input-container>
             <md-input-container>
                 <label>Weight (kg)</label>
-                <input ng-required="true" name="age">
+                <input ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()">
             </md-input-container>
+        </div>
+    </div>
+    <div layout="row" ng-show="selection.showbmi" layout-margin layout-fill layout-padding>
+        <div flex="25">
+            <div>Your BMI is {{ selection.bmi }}</div>
+            <div>The recommended calories intake is</div>
+            <div>{{ selection.kcalperday }} calories</div>
         </div>
     </div>
     <div layout="row">
         <div>
             <md-radio-group layout="row">
-                <label for="input_008">Are you Vegetarian?</label>
+                <label>Are you vegetarian?</label>
                 <md-radio-button value="Apple">Yes</md-radio-button>
                 <md-radio-button value="Banana"> No </md-radio-button>
             </md-radio-group>
@@ -34,7 +41,7 @@
     </div>
     <div layout="row">
         <div>
-            <md-button class="md-raised md-primary" style="width:98%">Give Me My Meal Plan</md-button>
+            <md-button class="md-raised md-primary">Give Me My Meal Plan</md-button>
         </div>
     </div>
 </div>
