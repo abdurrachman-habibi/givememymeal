@@ -1,0 +1,52 @@
+<div style="height: 100%; position: absolute;">
+    <md-content style="height: 100%;">
+        <div ng-repeat="meal in selectionResult.meals">
+            <h3 style="padding: 16px 0 16px 16px;">Day {{$index + 1}}</h3>
+            <div>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Breakfast</md-subheader>
+                    <md-list-item class="md-2-line">
+                        <img ng-src="{{meal.breakfast.image}}" class="md-avatar" alt="{{meal.breakfast.meal}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{meal.breakfast.meal}}</h3>
+                            <p>{{meal.breakfast.calories}} cal</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+
+                <md-list>
+                    <md-subheader class="md-no-sticky">Lunch</md-subheader>
+                    <md-list-item class="md-2-line">
+                        <img ng-src="{{meal.lunch.image}}" class="md-avatar" alt="{{meal.lunch.meal}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{meal.lunch.meal}}</h3>
+                            <p>{{meal.lunch.calories}} cal</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+
+                <md-list>
+                    <md-subheader class="md-no-sticky">Snack</md-subheader>
+                    <md-list-item class="md-2-line">
+                        <img ng-src="{{meal.snack.image}}" class="md-avatar" alt="{{meal.snack.meal}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{meal.snack.meal}}</h3>
+                            <p>{{meal.snack.calories}} cal</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+
+                <md-list>
+                    <md-subheader class="md-no-sticky">Dinner</md-subheader>
+                    <md-list-item class="md-2-line">
+                        <img ng-src="{{meal.dinner.image}}" class="md-avatar" alt="{{meal.dinner.meal}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{meal.dinner.meal}}</h3>
+                            <p>{{meal.dinner.calories}} cal</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </div>
+    </md-content>
+</div>

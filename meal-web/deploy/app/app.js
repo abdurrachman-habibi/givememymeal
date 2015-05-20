@@ -27,7 +27,14 @@
             configuration: {
                 templateUrl: 'app/selection/selection.html',
                 controller: 'SelectionController',
-                controllerAs: 'home'
+                controllerAs: 'selection'
+            }
+        },{
+            url: '/selection-result',
+            configuration: {
+                templateUrl: 'app/selection/result.html',
+                controller: 'SelectionResultController',
+                controllerAs: 'selectionResult'
             }
         }
     ];
