@@ -16,6 +16,7 @@
                 lastPreference = preference;
                 lastCalories = calories;
                 service.meals = data.meals;
+                service.groceries = data.groceries;
             });
         }
 
