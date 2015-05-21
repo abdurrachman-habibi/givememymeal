@@ -44,7 +44,10 @@
             </md-content>
         </md-tab>
     </md-tabs>
-    <section layout="row" layout-sm="column" layout-align="start end">
-        <md-button id="backButton" class="md-raised md-warn" ng-click="selectionResult.back()">Back</md-button>
+    <section style="position: fixed; top: auto; right: 20px; bottom: 20px; left: auto;">
+        <md-button class="md-raised md-primary" ng-click="selectionResult.showBottomSheet()">Action</md-button>
     </section>
+</div>
+<div class="overlay" layout="row" layout-align="center center" ng-show="selectionResult.loading">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
