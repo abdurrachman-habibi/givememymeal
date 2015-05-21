@@ -1,11 +1,30 @@
 (function(){
     'use strict';
 
-    function SelectionResultController($location, selectionService){
-        this.meals = selectionService.meals;
+    function SelectionResultController($location, $mdBottomSheet, selectionService){
+        var vm = this;
+        vm.meals = selectionService.meals;
+        vm.loading = false;
 
-        this.back = function () {
-            $location.path('/selection');
+        vm.showBottomSheet = function() {
+            $mdBottomSheet.show({
+                templateUrl: 'app/selection/bottom-sheet-result.html',
+                controller: 'BottomSheetController'
+            }).then(function(clickedItem) {
+                if(clickedItem == "Back"){
+                    $location.path('/selection');
+                }
+                else if(clickedItem == "Refresh"){
+                    vm.loading = true;
+                    selectionService.retrieve().then(function(){
+                        vm.meals = selectionService.meals;
+                        vm.loading = false;
+                    });
+                }
+                else if(clickedItem == "Groceries"){
+
+                }
+            });
         }
     }
 
