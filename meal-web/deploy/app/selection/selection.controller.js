@@ -11,11 +11,11 @@
 
         vm.showbmi = false;
 
-        vm.height = 170;
-        vm.weight = 62;
-        vm.gender = 1;
-        vm.age = 29;
-        vm.showbmi = true;
+        //vm.height = 170;
+        //vm.weight = 62;
+        //vm.gender = 1;
+        //vm.age = 29;
+        //vm.showbmi = true;
 
         vm.calculateBMI = function () {
             

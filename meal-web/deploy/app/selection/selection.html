@@ -3,30 +3,30 @@
         <div flex="15">
             <md-input-container>
                 <label>Age</label>
-                <input ng-required="true" name="age" maxlength="3" ng-model="selection.age" ng-change="selection.calculateBMI()">
+                <input id="ageInput" ng-required="true" name="age" maxlength="3" ng-model="selection.age" ng-change="selection.calculateBMI()">
             </md-input-container>
         </div>
     </div>
     <div layout="row">
         <div flex="25">
-            <md-select placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
+            <md-select id="genderSelect" placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
                 <md-option value="1">Male</md-option>
                 <md-option value="2">Female</md-option>
             </md-select>
             <md-input-container>
                 <label>Height (cm)</label>
-                <input ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()">
+                <input id="heightInput" ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()">
             </md-input-container>
             <md-input-container>
                 <label>Weight (kg)</label>
-                <input ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()">
+                <input id="weightInput" ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()">
             </md-input-container>
         </div>
     </div>
     <div layout="row">
         <div>
             <label>Are you vegetarian?</label>
-            <md-radio-group layout="row">
+            <md-radio-group id="vegetarianRadioButton" layout="row">
                 <md-radio-button value="Apple">Yes</md-radio-button>
                 <md-radio-button value="Banana"> No </md-radio-button>
             </md-radio-group>
@@ -41,7 +41,7 @@
     </div>
     <div layout="row">
         <div>
-            <md-button class="md-raised md-primary">Give Me My Meal Plan</md-button>
+            <md-button id="giveMeMyMealPlanButton" class="md-raised md-primary">Give Me My Meal Plan</md-button>
         </div>
     </div>
 </div>
