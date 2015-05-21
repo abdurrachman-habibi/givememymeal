@@ -10,6 +10,7 @@
         var vm = this;
 
         vm.showbmi = false;
+        vm.vegetarian = 1;
 
         //vm.height = 170;
         //vm.weight = 62;
@@ -38,8 +39,9 @@
             }
         };
 
-        vm.submit = function(){
-            selectionService.retrieve('1', '123').then(function(){
+        vm.submit = function () {
+            
+            selectionService.retrieve(vm.vegetarian, vm.kcalperday).then(function(){
                 $location.path('/selection-result');
             });
         }

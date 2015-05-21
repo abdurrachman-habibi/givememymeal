@@ -26,9 +26,9 @@
     <div layout="row">
         <div>
             <label>Are you vegetarian?</label>
-            <md-radio-group id="vegetarianRadioButton" layout="row">
-                <md-radio-button value="Apple">Yes</md-radio-button>
-                <md-radio-button value="Banana"> No </md-radio-button>
+            <md-radio-group id="vegetarianRadioButton" ng-model="selection.vegetarian" layout="row">
+                <md-radio-button value="0">Yes</md-radio-button>
+                <md-radio-button value="1"> No </md-radio-button>
             </md-radio-group>
         </div>
     </div>
@@ -41,7 +41,7 @@
     </div>
     <div layout="row">
         <div>
-            <md-button id="giveMeMyMealPlanButton" class="md-raised md-primary">Give Me My Meal Plan</md-button>
+            <md-button id="giveMeMyMealPlanButton" class="md-raised md-primary" ng-click="selection.submit()">Give Me My Meal Plan</md-button>
         </div>
     </div>
 </div>
