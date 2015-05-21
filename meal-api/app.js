@@ -67,6 +67,32 @@ router.route('/meals')
     });
 
 function filterItems(items, cal) {
+    var filteredMeals = [];
+    var ingredients = {};
+    var imageUri = 'http://givememymeal.blob.core.windows.net/images/';
+
+    var mealUnit = {
+        Milk: 'ml',
+        Spices: 'g',
+        Flour: 'g',
+        Eggs: 'pc',
+        Cheese: 'g',
+        Sugar: 'g',
+        Butter: 'g',
+        Meat: 'g',
+        Vegetable: 'g',
+        Wine: 'ml',
+        Bread: 'slices',
+        Tofu: 'g',
+        Pasta: 'g',
+        Fruit:'g',
+        Fish: 'g',
+        Rice: 'g',
+        Poultry: 'g',
+        Bar: 'pc',
+        Nut: 'g'
+    };
+
     function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
@@ -75,6 +101,28 @@ function filterItems(items, cal) {
             array[j] = temp;
         }
         return array;
+    }
+
+    function addIngredients(meal){
+        for(var prop in meal){
+            if(meal.hasOwnProperty(prop) && meal[prop] && mealUnit[prop]){
+                if(!ingredients[prop]){
+                    ingredients[prop] = 0;
+                }
+
+                ingredients[prop] += parseInt(meal[prop]);
+            }
+        }
+    }
+
+    function appendIngredientUnit(){
+
+
+        for(var prop in ingredients){
+          if(ingredients.hasOwnProperty(prop)){
+              ingredients[prop] += ' ' + mealUnit[prop];
+          }
+        }
     }
 
     var meals = {
@@ -91,9 +139,6 @@ function filterItems(items, cal) {
             return item.Type == 'Dinner'
         })
     };
-
-    var filteredMeals = [];
-    var imageUri = 'http://givememymeal.blob.core.windows.net/images/';
 
     for (var i = 0; i < 7; i++) {
         var tempCal = cal;
@@ -114,6 +159,8 @@ function filterItems(items, cal) {
                     meal: mealType.RowKey,
                     image: imageUri + escapeString.escape(mealType.RowKey) + '.jpg'
                 };
+
+                addIngredients(mealType);
             }
 
             tempCal -= mealType.Calories;
@@ -130,12 +177,19 @@ function filterItems(items, cal) {
                 meal: snack.RowKey,
                 image: imageUri + escapeString.escape(snack.RowKey) + '.jpg'
             };
+
+            addIngredients(snack);
         }
 
         filteredMeals.push(meal);
     }
 
-    return filteredMeals;
+    appendIngredientUnit();
+
+    return {
+        meals: filteredMeals,
+        groceries: ingredients
+    };
 }
 
 // REGISTER OUR ROUTES -------------------------------

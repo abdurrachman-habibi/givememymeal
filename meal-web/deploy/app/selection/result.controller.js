@@ -2,7 +2,7 @@
     'use strict';
 
     function SelectionResultController($location, selectionService){
-        this.meals = selectionService.data;
+        this.meals = selectionService.meals;
     }
 
     window.angular.module('app').controller('SelectionResultController', SelectionResultController);

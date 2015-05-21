@@ -9,12 +9,13 @@
             api+= '&cal=' + calories;
 
             return $http.get(api).success(function(data){
-                service.data = data;
+                service.data = data.meals;
             });
         }
 
         var service ={
-            data: [],
+            meals: [],
+            groceries: {},
             retrieve: retrieve
         };
 
