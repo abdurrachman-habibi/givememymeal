@@ -56,12 +56,27 @@ router.route('/meals')
             if (err)
                 res.send(err);
 
-            var result = filterItems(items, cal);
-            res.json(result);
+            try {
+                var result = filterItems(items, parseInt(cal));
+                res.json(result);
+            }
+            catch(e){
+                res.json([]);
+            }
         });
     });
 
 function filterItems(items, cal) {
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
     var meals = {
         breakfast: items.filter(function (item) {
             return item.Type == 'Breakfast'
@@ -81,32 +96,41 @@ function filterItems(items, cal) {
     var imageUri = 'http://givememymeal.blob.core.windows.net/images/';
 
     for (var i = 0; i < 7; i++) {
-        var breakfast = meals.breakfast[Math.floor(Math.random() * meals.breakfast.length)];
-        var lunch = meals.lunch[Math.floor(Math.random() * meals.lunch.length)];
-        var snack = meals.snack[Math.floor(Math.random() * meals.snack.length)];
-        var dinner = meals.dinner[Math.floor(Math.random() * meals.dinner.length)];
-        var meal = {
-            breakfast: {
-                meal: breakfast.RowKey,
-                calories: breakfast.Calories,
-                image: imageUri + escapeString.escape(breakfast.RowKey) + '.jpg'
-            },
-            lunch: {
-                meal: lunch.RowKey,
-                calories: lunch.Calories,
-                image: imageUri + escapeString.escape(lunch.RowKey) + '.jpg'
-            },
-            snack: {
-                meal: snack.RowKey,
-                calories: snack.Calories,
-                image: imageUri + escapeString.escape(snack.RowKey) + '.jpg'
-            },
-            dinner: {
-                meal: dinner.RowKey,
-                calories: dinner.Calories,
-                image: imageUri + escapeString.escape(dinner.RowKey) + '.jpg'
+        var tempCal = cal;
+        var meal = {};
+        var arr = ['breakfast', 'lunch', 'dinner'];
+        shuffleArray(arr);
+        var avg = 0.3 * tempCal;
+
+        for (var j = 0; j < arr.length; j++) {
+            var temps = meals[arr[j]].filter(function (item) {
+                return item.Calories >= avg - 100 && item.Calories <= avg + 100
+            });
+
+            var mealType = temps[Math.floor(Math.random() * temps.length)];
+
+            if(mealType) {
+                meal[arr[j]] = {
+                    meal: mealType.RowKey,
+                    image: imageUri + escapeString.escape(mealType.RowKey) + '.jpg'
+                };
             }
-        };
+
+            tempCal -= mealType.Calories;
+        }
+
+        var snacks = meals.snack.filter(function (item) {
+            return item.Calories <= tempCal
+        });
+
+        var snack = snacks[Math.floor(Math.random() * snacks.length)];
+
+        if(snack) {
+            meal.snack = {
+                meal: snack.RowKey,
+                image: imageUri + escapeString.escape(snack.RowKey) + '.jpg'
+            };
+        }
 
         filteredMeals.push(meal);
     }
