@@ -1,8 +1,7 @@
-<div style="height: 100%; position: absolute;">
-    <md-content style="height: 100%;">
-        <div ng-repeat="meal in selectionResult.meals">
-            <h3 style="padding: 16px 0 16px 16px;">Day {{$index + 1}}</h3>
-            <div>
+<div style="height: 100%;">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Day {{$index + 1}}" ng-repeat="meal in selectionResult.meals">
+            <md-content class="md-padding">
                 <md-list>
                     <md-subheader class="md-no-sticky">Breakfast</md-subheader>
                     <md-list-item class="md-2-line">
@@ -42,7 +41,7 @@
                         </div>
                     </md-list-item>
                 </md-list>
-            </div>
-        </div>
-    </md-content>
+            </md-content>
+        </md-tab>
+    </md-tabs>
 </div>
