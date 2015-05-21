@@ -9,7 +9,7 @@
             api+= '&cal=' + calories;
 
             return $http.get(api).success(function(data){
-                service.data = data.meals;
+                service.meals = data.meals;
             });
         }
 
