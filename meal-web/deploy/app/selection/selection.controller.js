@@ -11,16 +11,21 @@
 
         vm.showbmi = false;
 
+        vm.height = 170;
+        vm.weight = 62;
+        vm.gender = 1;
+        vm.age = 29;
+        vm.showbmi = true;
+
         vm.calculateBMI = function () {
             
-            if (!(vm.height === undefined || vm.weight === undefined || vm.gender === undefined))
+            if (!(vm.height === undefined || vm.weight === undefined || vm.gender === undefined || vm.age === undefined))
                 vm.showbmi = true;
-            else {
+            else 
                 vm.showbmi = false;
-            }
-
+            
             if (vm.showbmi) {
-                vm.bmi = vm.weight / (vm.height / 100);
+                vm.bmi = vm.weight / ((vm.height / 100) * (vm.height / 100));
 
                 var computekcalperday = (10 * vm.weight) + (6.25 * vm.height) - (5 * vm.age);
 
