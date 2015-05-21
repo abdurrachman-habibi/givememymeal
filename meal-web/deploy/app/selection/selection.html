@@ -1,38 +1,28 @@
-<div layout="column" layout-padding layout-align="center center">
-    <div layout="row">
-        <div flex="15">
-            <md-input-container>
-                <label>Age</label>
-                <input id="ageInput" ng-required="true" name="age" maxlength="3" ng-model="selection.age" ng-change="selection.calculateBMI()">
-            </md-input-container>
-        </div>
+<div layout="column" layout-padding layout-align="center center" layout-fill>
+    <md-input-container>
+        <label>Age</label>
+        <input id="ageInput" ng-required="true" name="age" maxlength="3" ng-model="selection.age" ng-change="selection.calculateBMI()" style="text-align:center;">
+    </md-input-container>
+    <md-select id="genderSelect" placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
+        <md-option value="1">Male</md-option>
+        <md-option value="2">Female</md-option>
+    </md-select>
+    <md-input-container>
+        <label>Height (cm)</label>
+        <input id="heightInput" ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()" style="text-align:center;">
+    </md-input-container>
+    <md-input-container>
+        <label>Weight (kg)</label>
+        <input id="weightInput" ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()" style="text-align:center;">
+    </md-input-container>
+    <div layout="row" layout-align="center center">
+        <label>Are you vegetarian?</label>
     </div>
-    <div layout="row">
-        <div flex="25">
-            <md-select id="genderSelect" placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
-                <md-option value="1">Male</md-option>
-                <md-option value="2">Female</md-option>
-            </md-select>
-            <md-input-container>
-                <label>Height (cm)</label>
-                <input id="heightInput" ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()">
-            </md-input-container>
-            <md-input-container>
-                <label>Weight (kg)</label>
-                <input id="weightInput" ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()">
-            </md-input-container>
-        </div>
-    </div>
-    <div layout="row">
-        <div>
-            <label>Are you vegetarian?</label>
-            <md-radio-group id="vegetarianRadioButton" ng-model="selection.vegetarian" layout="row">
-                <md-radio-button value="0">Yes</md-radio-button>
-                <md-radio-button value="1"> No </md-radio-button>
-            </md-radio-group>
-        </div>
-    </div>
-    <div layout="row" ng-show="selection.showbmi">
+    <md-radio-group id="vegetarianRadioButton" ng-model="selection.vegetarian" layout="row">
+        <md-radio-button value="0">Yes</md-radio-button>
+        <md-radio-button value="1"> No </md-radio-button>
+    </md-radio-group>
+    <div ng-show="selection.showbmi">
         <div>
             <div>Your BMI is {{ selection.bmi }}</div>
             <div>The recommended calories intake is</div>
