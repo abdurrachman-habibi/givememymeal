@@ -1,11 +1,3 @@
-//var mongoose     = require('mongoose');
-//var Schema       = mongoose.Schema;
-//
-//var MealSchema   = new Schema({
-//    name: String
-//});
-//
-//module.exports = mongoose.model('Meal', MealSchema);
 
 var azure = require('azure-storage');
 
@@ -21,8 +13,11 @@ Meal.prototype = {
     query: function (partitionKey, callback) {
         var self = this;
 
-        var query = new azure.TableQuery()
-            .where('PartitionKey eq ?', partitionKey);
+        var query = new azure.TableQuery();
+
+        if(partitionKey === 'Vegetarian') {
+            query = query.where('PartitionKey eq ?', partitionKey);
+        }
 
         self.storageClient.queryEntities(self.tableName, query, null, function entitiesQueried(error, result) {
             if (error) {
