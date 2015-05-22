@@ -8,7 +8,7 @@
         function retrieve(preference, calories){
             preference = preference || lastPreference;
             calories = calories || lastCalories;
-            var api = 'http://meal-api.azurewebsites.net/api/meals?';
+            var api = 'https://meal-api.azurewebsites.net/api/meals?';
             api += 'key=' + preference;
             api+= '&cal=' + calories;
 
