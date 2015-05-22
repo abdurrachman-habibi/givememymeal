@@ -1,26 +1,32 @@
-<div layout="column" layout-padding layout-align="center center">
+<div class="selection-container" layout="column" layout-padding layout-align="center center">
     <md-input-container>
         <label>Age</label>
-        <input id="ageInput" ng-required="true" name="age" maxlength="3" ng-model="selection.age" ng-change="selection.calculateBMI()" style="text-align:center;">
+        <input id="ageInput" ng-required="true" name="age" maxlength="3" ng-model="selection.age"
+               ng-change="selection.calculateBMI()" style="text-align:center;">
     </md-input-container>
-    <md-select class="genderSelect" placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
-        <md-option value="1">Male</md-option>
-        <md-option value="2">Female</md-option>
-    </md-select>
+    <md-input-container>
+        <md-select class="genderSelect" placeholder="Gender" ng-model="selection.gender"
+                   ng-change="selection.calculateBMI()">
+            <md-option value="1">Male</md-option>
+            <md-option value="2">Female</md-option>
+        </md-select>
+    </md-input-container>
     <md-input-container>
         <label>Height (cm)</label>
-        <input id="heightInput" ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()" style="text-align:center;">
+        <input id="heightInput" ng-required="true" ng-model="selection.height" ng-change="selection.calculateBMI()"
+               style="text-align:center;">
     </md-input-container>
     <md-input-container>
         <label>Weight (kg)</label>
-        <input id="weightInput" ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()" style="text-align:center;">
+        <input id="weightInput" ng-required="true" ng-model="selection.weight" ng-change="selection.calculateBMI()"
+               style="text-align:center;">
     </md-input-container>
     <div layout="row" layout-align="center center">
         <label>Are you vegetarian?</label>
     </div>
     <md-radio-group id="vegetarianRadioButton" ng-model="selection.vegetarian" layout="row">
         <md-radio-button value="0" id="vegetarianYesRadio">Yes</md-radio-button>
-        <md-radio-button value="1" id="vegetarianNoRadio"> No </md-radio-button>
+        <md-radio-button value="1" id="vegetarianNoRadio"> No</md-radio-button>
     </md-radio-group>
     <div ng-show="selection.showbmi" layout-margin layout-padding>
         <div>
@@ -31,7 +37,9 @@
     </div>
     <div layout="row">
         <div>
-            <md-button id="giveMeMyMealPlanButton" class="md-raised md-primary" ng-click="selection.submit()">Give Me My Meal Plan</md-button>
+            <md-button id="giveMeMyMealPlanButton" class="md-raised md-primary" ng-click="selection.submit()">Give Me My
+                Meal Plan
+            </md-button>
         </div>
     </div>
 </div>

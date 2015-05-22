@@ -38,3 +38,7 @@
     z-index:9999;
     color:white;
 }
+
+.selection-container md-input-container{
+    width: 50%;
+}

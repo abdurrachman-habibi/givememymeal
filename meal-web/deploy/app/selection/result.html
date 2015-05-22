@@ -52,7 +52,7 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<script type="text/ng-template" id="dialog1.tmpl.html">
+<script type="text/ng-template" id="meal.detail.html">
     <md-dialog>
         <form>
             <md-dialog-content class="sticky-container" layout-padding>
@@ -83,5 +83,23 @@
                 </md-button>
             </div>
         </form>
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="groceries.detail.html">
+    <md-dialog>
+        <md-dialog-content>
+            <h3>Here is your shopping list for this week</h3>
+            <ul>
+                <li ng-repeat="(key, value) in dialog.groceries">
+                    {{key}} : {{value}}
+                </li>
+            </ul>
+            <div class="md-actions" layout="row">
+                <md-button ng-click="dialog.hide()" class="md-primary">
+                    <h4>Got it!</h4>
+                </md-button>
+            </div>
+        </md-dialog-content>
     </md-dialog>
 </script>
