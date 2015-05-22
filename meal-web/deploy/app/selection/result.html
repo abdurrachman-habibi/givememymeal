@@ -75,3 +75,16 @@
         </form>
     </md-dialog>
 </script>
+
+<script type="text/ng-template" id="groceries.detail.html">
+    <md-dialog>
+        <md-dialog-content>
+            <h3>Here is your shopping list for this week</h2>
+            <ul>
+                <li ng-repeat="(key, value) in dialog.groceries">
+                    {{key}} : {{value}}
+                </li>
+            </ul>
+        </md-dialog-content>
+    </md-dialog>
+</script>

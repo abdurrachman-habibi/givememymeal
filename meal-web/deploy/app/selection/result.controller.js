@@ -29,26 +29,35 @@
                             content += item + ', ';
                         }
                     }
-                    $mdDialog.show(
-                        $mdDialog.alert()
-                            .title('Here is your groceries list for the next week')
-                            .content(content)
-                            .ok('Got it!')
-                    );
+                    //$mdDialog.show(
+                    //    $mdDialog.alert()
+                    //        .title('Here is your groceries list for the next week')
+                    //        .content(content)
+                    //        .ok('Got it!')
+                    //);
 
-                    //$mdDialog.show({
-                    //
-                    //})
+                    $mdDialog.show({
+                        controller: function () {
+                            this.hide = function () {
+                                $mdDialog.hide();
+                            };
+                            return this;
+                        },
+                        controllerAs: 'dialog',
+                        templateUrl: 'groceries.detail.html',
+                        locals: { groceries: selectionService.groceries },
+                        bindToController: true
+                    });
                 }
             });
-        }
+        };
 
         vm.showMeal = function (data) {
             $mdDialog.show({
                 controller: function () {
                     this.hide = function () {
                         $mdDialog.hide();
-                    }
+                    };
                     return this;
                 },
                 controllerAs: 'dialog',
