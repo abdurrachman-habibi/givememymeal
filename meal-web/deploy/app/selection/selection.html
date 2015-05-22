@@ -3,7 +3,7 @@
         <label>Age</label>
         <input id="ageInput" ng-required="true" name="age" maxlength="3" ng-model="selection.age" ng-change="selection.calculateBMI()" style="text-align:center;">
     </md-input-container>
-    <md-select id="genderSelect" placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
+    <md-select class="genderSelect" placeholder="Gender" ng-model="selection.gender" ng-change="selection.calculateBMI()">
         <md-option value="1">Male</md-option>
         <md-option value="2">Female</md-option>
     </md-select>
@@ -19,14 +19,14 @@
         <label>Are you vegetarian?</label>
     </div>
     <md-radio-group id="vegetarianRadioButton" ng-model="selection.vegetarian" layout="row">
-        <md-radio-button value="0">Yes</md-radio-button>
-        <md-radio-button value="1"> No </md-radio-button>
+        <md-radio-button value="0" id="vegetarianYesRadio">Yes</md-radio-button>
+        <md-radio-button value="1" id="vegetarianNoRadio"> No </md-radio-button>
     </md-radio-group>
     <div ng-show="selection.showbmi">
         <div>
-            <div>Your BMI is {{ selection.bmi }}</div>
+            <div>Your BMI is {{ selection.bmi | number }}</div>
             <div>The recommended calories intake is</div>
-            <div>{{ selection.kcalperday }} calories</div>
+            <div>{{ selection.kcalperday | number }} calories</div>
         </div>
     </div>
     <div layout="row">
