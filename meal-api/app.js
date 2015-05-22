@@ -60,7 +60,7 @@ router.route('/meals')
                 var result = filterItems(items, parseInt(cal));
                 res.json(result);
             }
-            catch(e){
+            catch (e) {
                 res.json([]);
             }
         });
@@ -85,7 +85,7 @@ function filterItems(items, cal) {
         Bread: 'slices',
         Tofu: 'g',
         Pasta: 'g',
-        Fruit:'g',
+        Fruit: 'g',
         Fish: 'g',
         Rice: 'g',
         Poultry: 'g',
@@ -103,10 +103,10 @@ function filterItems(items, cal) {
         return array;
     }
 
-    function addIngredients(meal){
-        for(var prop in meal){
-            if(meal.hasOwnProperty(prop) && meal[prop] && mealUnit[prop]){
-                if(!ingredients[prop]){
+    function addIngredients(meal) {
+        for (var prop in meal) {
+            if (meal.hasOwnProperty(prop) && meal[prop] && mealUnit[prop]) {
+                if (!ingredients[prop]) {
                     ingredients[prop] = 0;
                 }
 
@@ -115,14 +115,24 @@ function filterItems(items, cal) {
         }
     }
 
-    function appendIngredientUnit(){
-
-
-        for(var prop in ingredients){
-          if(ingredients.hasOwnProperty(prop)){
-              ingredients[prop] += ' ' + mealUnit[prop];
-          }
+    function appendIngredientUnit() {
+        for (var prop in ingredients) {
+            if (ingredients.hasOwnProperty(prop)) {
+                ingredients[prop] += ' ' + mealUnit[prop];
+            }
         }
+    }
+
+    function createIngredientObj(meal) {
+        var item = {};
+
+        for (var prop in meal) {
+            if (meal.hasOwnProperty(prop) && meal[prop] && mealUnit[prop]) {
+                item[prop] = parseInt(meal[prop]) + ' ' + mealUnit[prop];
+            }
+        }
+
+        return item;
     }
 
     var meals = {
@@ -154,10 +164,11 @@ function filterItems(items, cal) {
 
             var mealType = temps[Math.floor(Math.random() * temps.length)];
 
-            if(mealType) {
+            if (mealType) {
                 meal[arr[j]] = {
                     meal: mealType.RowKey,
-                    image: imageUri + escapeString.escape(mealType.RowKey) + '.jpg'
+                    image: imageUri + escapeString.escape(mealType.RowKey) + '.jpg',
+                    ingredients: createIngredientObj(mealType)
                 };
 
                 addIngredients(mealType);
@@ -172,10 +183,11 @@ function filterItems(items, cal) {
 
         var snack = snacks[Math.floor(Math.random() * snacks.length)];
 
-        if(snack) {
+        if (snack) {
             meal.snack = {
                 meal: snack.RowKey,
-                image: imageUri + escapeString.escape(snack.RowKey) + '.jpg'
+                image: imageUri + escapeString.escape(snack.RowKey) + '.jpg',
+                ingredients: createIngredientObj(snack)
             };
 
             addIngredients(snack);
