@@ -20,7 +20,7 @@ gulp.task('bundleJS', function () {
         'bower_components/angular-local-storage/dist/angular-local-storage.min.js'
     ])
         .pipe(concat('bower-bundle.min.js'))
-        .pipe(gulp.dest('app/lib/js'))
+        .pipe(gulp.dest('deploy/lib/js'))
 });
 
 gulp.task('bundleCSS', function () {
