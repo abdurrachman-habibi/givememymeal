@@ -61,9 +61,19 @@
                         {{ dialog.mealSelected.meal }}
                     </h2>
                 </md-subheader>
-                <div layout="row">
-                    <div flex="50">
-                        <img src="{{ dialog.mealSelected.image }}">
+                <div layout="row" layout-padding>
+                    <div flex>
+                        <md-content>
+                            <img class="md-avatar" src="{{ dialog.mealSelected.image }}">
+                        </md-content>
+                    </div>
+                    <div layout="column">
+                        <div>Ingredients</div>
+                        <ul>
+                            <li ng-repeat="(key, value) in dialog.mealSelected.ingredients">
+                                {{ value }} {{ key }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </md-dialog-content>
