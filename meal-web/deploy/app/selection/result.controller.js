@@ -52,7 +52,7 @@
                     return this;
                 },
                 controllerAs: 'dialog',
-                templateUrl: 'dialog1.tmpl.html',
+                templateUrl: 'meal.detail.html',
                 locals: { mealSelected: data },
                 bindToController: true
             });
