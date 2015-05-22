@@ -2,8 +2,8 @@
 var azure = require('azure-storage');
 
 function Meal() {
-    var accountName = 'givememymeal';
-    var accountKey = 'E7hVwo0eXa6F2/ujue/Z3SC1+TduLb/k3UrdW7RQfFtUNlgRdsCneH9Q5Y5Fai5dXg0p+tkQsw+23UIJCND1pQ==';
+    var accountName = process.env.AzureStorageName;
+    var accountKey = process.env.AzureStorageKey;
 
     this.storageClient = azure.createTableService(accountName, accountKey);
     this.tableName = "meals";
