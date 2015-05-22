@@ -42,6 +42,21 @@
                 }
             });
         }
+
+        vm.showMeal = function (data) {
+            $mdDialog.show({
+                controller: function () {
+                    this.hide = function () {
+                        $mdDialog.hide();
+                    }
+                    return this;
+                },
+                controllerAs: 'dialog',
+                templateUrl: 'dialog1.tmpl.html',
+                locals: { mealSelected: data },
+                bindToController: true
+            });
+        }
     }
 
     window.angular.module('app').controller('SelectionResultController', SelectionResultController);

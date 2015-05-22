@@ -4,7 +4,7 @@
             <md-content class="md-padding" layout-padding style="height:70vh">
                 <md-list>
                     <md-subheader class="md-no-sticky">Breakfast</md-subheader>
-                    <md-list-item class="md-2-line">
+                    <md-list-item class="md-2-line" ng-click="selectionResult.showMeal(meal.breakfast)">
                         <img ng-src="{{meal.breakfast.image}}" class="md-avatar" alt="{{meal.breakfast.meal}}" />
                         <div class="md-list-item-text">
                             <h3>{{meal.breakfast.meal}}</h3>
@@ -14,7 +14,7 @@
 
                 <md-list>
                     <md-subheader class="md-no-sticky">Lunch</md-subheader>
-                    <md-list-item class="md-2-line">
+                    <md-list-item class="md-2-line" ng-click="selectionResult.showMeal(meal.lunch)">
                         <img ng-src="{{meal.lunch.image}}" class="md-avatar" alt="{{meal.lunch.meal}}" />
                         <div class="md-list-item-text">
                             <h3>{{meal.lunch.meal}}</h3>
@@ -24,7 +24,7 @@
 
                 <md-list>
                     <md-subheader class="md-no-sticky">Snack</md-subheader>
-                    <md-list-item class="md-2-line">
+                    <md-list-item class="md-2-line" ng-click="selectionResult.showMeal(meal.snack)">
                         <img ng-src="{{meal.snack.image}}" class="md-avatar" alt="{{meal.snack.meal}}" />
                         <div class="md-list-item-text">
                             <h3>{{meal.snack.meal}}</h3>
@@ -34,7 +34,7 @@
 
                 <md-list>
                     <md-subheader class="md-no-sticky">Dinner</md-subheader>
-                    <md-list-item class="md-2-line">
+                    <md-list-item class="md-2-line" ng-click="selectionResult.showMeal(meal.dinner)">
                         <img ng-src="{{meal.dinner.image}}" class="md-avatar" alt="{{meal.dinner.meal}}" />
                         <div class="md-list-item-text">
                             <h3>{{meal.dinner.meal}}</h3>
@@ -51,3 +51,27 @@
 <div class="overlay" layout="row" layout-align="center center" ng-show="selectionResult.loading">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
+
+<script type="text/ng-template" id="dialog1.tmpl.html">
+    <md-dialog>
+        <form>
+            <md-dialog-content class="sticky-container" layout-padding>
+                <md-subheader class="md-sticky-no-effect">
+                    <h2>
+                        {{ dialog.mealSelected.meal }}
+                    </h2>
+                </md-subheader>
+                <div layout="row">
+                    <div flex="50">
+                        <img src="{{ dialog.mealSelected.image }}">
+                    </div>
+                </div>
+            </md-dialog-content>
+            <div class="md-actions" layout="row">
+                <md-button ng-click="dialog.hide()" class="md-primary">
+                    Got it!
+                </md-button>
+            </div>
+        </form>
+    </md-dialog>
+</script>
