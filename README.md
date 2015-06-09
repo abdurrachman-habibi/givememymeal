@@ -1,3 +1,9 @@
+A simple website to test Azure continuous deployment with NodeJS and notification integration to Slack
+
+Azure integration to Slack is explained more in http://www.abdurrachman-habibi.com/integrating-azure-deployment-to-azure/
+
+This website is live on https://givememymeal.azurewebsites.net
+
 How to setup and run on dev
 
 1. Install NodeJS
